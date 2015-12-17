@@ -265,6 +265,61 @@ class DashboardCommon {
             DashboardCommon::initDateRangeFilter('lifetime');
         return $_SESSION['lm_conf']['period_to'];
     }
+    
+    public static function generateMemcacheHash($data)
+    {
+        return md5($data);
+    }
+
+    public static function getMemcacheData($hash)
+    {
+        global $memcache;
+        if (isset($memcache)) {
+            $data = $memcache->get($hash);
+            if ($data) {
+                return $data;
+            }
+        }
+
+        return false;
+    }
+
+    public static function setMemcacheData($hash, $data, $duration = 10800, $compress = 0)
+    {
+        global $memcache;
+        if (isset($memcache)) {
+            $memcache->set($hash, $data, $compress, $duration); //enable the result caching for 12 hours.
+        }
+    }
+
+    public static function executeAndReturnSingleColResultAndCache($sql, $col, $storeData = true, $memcacheHash = "", $returnZeroInsteadOfFalse = true)
+    {
+        $ret = false;
+        if (!$memcacheHash)
+            $memcacheHash = md5($sql);
+        $cachedData = DashboardCommon::getMemcacheData($memcacheHash);
+        if (!$cachedData) {
+            $res = DashboardCommon::db()->Execute($sql);
+            $field = $res->fields[$col];
+            if ($field == '') {
+                $field = 0;
+            }
+            if ($storeData)
+                DashboardCommon::setMemcacheData($memcacheHash, $field);
+            else
+                DashboardCommon::setMemcacheData($memcacheHash, $res);
+            $ret = $field;
+        } else {
+            $ret = $cachedData;
+        }
+
+        if ($returnZeroInsteadOfFalse === true) {
+            if ($ret === false)
+                $ret = 0;
+        }
+
+        return $ret;
+    }
 
 }
 

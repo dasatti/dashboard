@@ -49,4 +49,7 @@ $db = ADONewConnection('mysqli');
 $db->debug = true;
 $db->Connect(DBHOST,DBUSER,DBPASS,DBNAME) or die("Database not found! please install your application properly");
 
+//If memcache enabled enable this as well to improve performance
+//$memcache = new Memcached();
+//$memcache->addServer('localhost', 11211);
 ?>
