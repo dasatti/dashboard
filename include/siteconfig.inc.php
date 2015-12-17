@@ -1,10 +1,12 @@
-<?php session_start();
+<?php 
+session_start();
+ini_set("display_error", 0);
 #######################
 #
 # Data Base Connection
 #
 #######################
-error_reporting(1);
+error_reporting(0);
 //define('DBHOST', 'localhost'); 
 //define('DBUSER', 'lmagency');
 //define('DBPASS', 'Local@2014');
@@ -17,7 +19,7 @@ define('ROOT',"../");
 
 define('DBHOST', 'localhost'); 
 define('DBUSER', 'root');
-define('DBPASS', 'dasatti');
+define('DBPASS', '');
 define('DBNAME', 'dashboard');
 
 //define('DBHOST', '23.229.139.96'); 
@@ -25,8 +27,7 @@ define('DBNAME', 'dashboard');
 //define('DBPASS', 'Local@2014');
 //define('DBNAME', 'lmgsm');
 
-ini_set("display_error", 1);
-error_reporting(E_ALL);
+
 
 $sub = "/dashboard";
 if(strstr($_SERVER['HTTP_HOST'],'dev1')){

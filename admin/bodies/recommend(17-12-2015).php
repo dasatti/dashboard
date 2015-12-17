@@ -114,8 +114,8 @@ share report Modal Dialog
       <div class="modal-body">
               <input type="hidden" name="share_report_type" id="share_report_type" value="calls">
               <input type="hidden" name="share_report_period" id="share_report_period" value="lifetime">
-              <input type="hidden" name="share_report_period_to" id="share_report_period_to" value="">
-              <input type="hidden" name="share_report_period_from" id="share_report_period_from" value="">
+              <input type="hidden" name="share_report_period_to" id="share_report_type" value="">
+              <input type="hidden" name="share_report_period_from" id="share_report_period" value="">
           <div id="modal-share-message" class="alert alert-danger" role="alert"></div>
         <div class="row">
           <div class="col-md-6">
