@@ -11,7 +11,7 @@ require_once('../../include/siteconfig.inc.php');
 require_once('../../include/sitefunction.php');
 require_once('../include/common.php');
 
-$db = ADONewConnection('mysql');
+$db = ADONewConnection('mysqli');
 $db->Connect(DBHOST,DBUSER,DBPASS,DBNAME) or die("Database not found! please install your application properly");
 	
 //Check if user is super admin
@@ -382,8 +382,7 @@ if(isset($_GET['act'])){
             $calls = new Calls();
             $calls->setPeriod($report_period);
             if($report_period=='custom'){
-				//echo $_POST['share_report_period_from']."-".$_POST['share_report_period_to'];exit;
-                $calls->setCustomPeriod($_POST['share_report_period_from'], $_POST['share_report_period_to']);
+                $calls->setCustomPeriod($_POST['from'], $_POST['to']);
             }
             $report_file = $calls->savePDFReport();
         } elseif($report_type=='emails'){
@@ -395,7 +394,7 @@ if(isset($_GET['act'])){
             $emails = new Emails();
             $emails->setPeriod($report_period);
             if($report_period=='custom'){
-                $emails->setCustomPeriod($_POST['share_report_period_from'], $_POST['share_report_period_to']);
+                $calls->setCustomPeriod($_POST['from'], $_POST['to']);
             }
             $report_file = $emails->savePDFReport();
         } elseif($report_type=='sms'){
@@ -407,7 +406,7 @@ if(isset($_GET['act'])){
             $sms = new SMS();
             $sms->setPeriod($report_period);
             if($report_period=='custom'){
-                $sms->setCustomPeriod($_POST['share_report_period_from'], $_POST['share_report_period_to']);
+                $sms->setCustomPeriod($_POST['from'], $_POST['to']);
             }
             $report_file = $sms->savePDFReport();
         }
@@ -441,7 +440,7 @@ if(isset($_GET['act'])){
         
         
         $res['type'] = 'success';
-        $res['msg'] = 'Successfully Shared with attachment '.$report_file;
+        $res['msg'] = 'Successfully Shared with attachment '.$report_path.$report_file;
         $res['name'] = $name;
         $res['report_path'] = $report_path;
         echo json_encode($res);

@@ -4,7 +4,6 @@
 	header('Cache-control: private, no-cache');
 	header('Expires: 0');
 	header('Pragma: no-cache');
-	error_reporting(0);
 	define('ROOT',"");
 	include('include/siteconfig.inc.php');
 	include('include/sitefunction.php');
