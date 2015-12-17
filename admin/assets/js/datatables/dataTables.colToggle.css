@@ -1,0 +1,93 @@
+/* 
+    Document   : dataTables.colToggle.css
+    Created on : May 5, 2015, 11:33:04 AM
+    Author     : danish <dasatti@gmail.com>
+    Description:
+        Created a dropdown menu with checkboxes
+*/
+
+
+.dt-coltoggle-dropdown {
+    float:right;
+    width: 90px;
+    border: 1px solid #ebebeb;
+    cursor: pointer; /* use correct mouse pointer when hovering over the dropdown */
+    padding:7px 10px;
+    position: relative;
+    margin: 0 auto;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 3px;
+    text-align: left;
+}
+
+/* Display CSS arrow to the right of the dropdown text */
+.dt-coltoggle-dropdown:after {
+    content:'';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 6px solid transparent;
+    border-top-color: #000;
+    top: 50%;
+    right: 10px;
+    margin-top: -3px;
+}
+
+/* Reverse the CSS arrow when the dropdown is active */
+.dt-coltoggle-dropdown.is-active:after {
+    border-color: #ebebeb;
+    margin-top: -9px;
+}
+
+.dt-coltoggle-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%; /* align the dropdown right below the dropdown text */
+    border: 0px;
+    left: -100px; /* align the dropdown to the left */
+    right: -1px; /* align the dropdown to the right */
+    opacity: 0; /* hide the dropdown */
+    -webkit-transition: opacity 0.4s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -ms-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none; /* avoid mouse click events inside the dropdown */
+    background-color: white;
+}
+.is-active .dt-coltoggle-dropdown-list {
+    opacity: 1; /* display the dropdown */
+    pointer-events: auto; /* make sure that the user still can select checkboxes */
+}
+
+.dt-coltoggle-dropdown-list li {
+    padding: 0px;
+    border: 1px solid #ebebeb;
+}
+
+.dt-coltoggle-dropdown-list li label {
+    display: block;
+    margin: 0px;
+    padding: 5px;
+    font-weight: normal;
+}
+
+.dt-coltoggle-dropdown-list li label:hover {
+    background-color: #f5f5f6;
+    color: #A6A7A;
+}
+
+.dt-coltoggle-dropdown-list li input[type=checkbox] {
+    padding: 5px;
+    margin: 5px;
+    height: 15px;
+    width: 15px;
+    margin-right: 10px;
+}

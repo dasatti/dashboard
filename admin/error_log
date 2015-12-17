@@ -1,0 +1,4 @@
+[27-Oct-2014 11:35:28 UTC] PHP Fatal error:  Call to a member function MoveNext() on a non-object in /home/localmediadev1/public_html/agency-dashboard/admin/bodies/managecalls.php on line 247
+[27-Oct-2014 12:02:58 UTC] PHP Fatal error:  Call to undefined function session_unregister() in /home/localmediadev1/public_html/agency-dashboard/admin/logout.php on line 4
+[05-Nov-2014 06:31:02 UTC] PHP Fatal error:  Class 'Mail' not found in /home/localmediadev1/public_html/agency-dashboard/admin/process.php on line 362
+[05-Nov-2014 11:24:09 UTC] PHP Fatal error:  Call to a member function MoveNext() on a non-object in /home/localmediadev1/public_html/agency-dashboard/admin/bodies/manageemails.php on line 69

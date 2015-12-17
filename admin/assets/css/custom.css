@@ -1,0 +1,185 @@
+/**
+ *
+ * Apply Here your Custom CSS
+ *
+*/
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400);
+/*Viral Links*/
+.viral-links{
+    text-align: center;
+}
+.viral-links h1 {    font-weight: 300;    font-family: 'Open Sans', sans-serif;    margin-bottom: 40px;    color: #303641;    font-size: 28px;}
+.viral-links a{    font-family: 'Open Sans', sans-serif;    font-weight: 700;    font-size: 28px;    margin: 0 100px;}
+a.green-btn {    color: #00a651;}
+a.green-btn:hover {    color: #007d3d;}
+a.blue-btn {    color: #0072bc;}
+a.blue-btn:hover {    color: #005993;}
+.share-modal textarea{	height:120px;}
+.share-modal .modal-footer{	margin-top:0px;}
+/*Share Buttons*/
+.share-button{	width:250px;	padding:8px 0;	font-family: 'Oswald', sans-serif;	display:block;	color:#FFF;	font-size:20px;	-webkit-border-radius: 4px;	-moz-border-radius: 4px;	border-radius: 4px;	margin:0 auto 15px auto;    text-align:center;}
+.share-button i{	font-size:26px;	margin:0 0px 0 10px;    margin-right: -12px;}
+.fb{	background-color:#3b5998;}
+.tw{	background-color:#1cb7eb;}
+.linkedin{	background-color:#007bb5;}
+.email-share{	background-color:#303641;	margin-bottom:0px;}
+/*Tiles With FA Icon*/
+.tile-stats .icon-fa{	bottom:45px;}
+/*Action Links*/
+.action-links{	text-align:center;}
+.action-links a{    font-family: 'Open Sans', sans-serif;    font-weight: 300;	font-size:22px;	padding:8px 25px;	-webkit-border-radius: 22px;	-moz-border-radius: 22px;	border-radius: 22px;	background-color:#FFF;	margin:0 10px;    text-transform: uppercase;    background-color: #f56954;    color: #FFF;    text-shadow: 0px 1px #ff0000;}
+.action-links a:hover {    background-color: #f4543c;}
+.action-links hr{	margin-top:-15px;}
+/*Manage Links*/
+.manage-links a{	color:#00c0ef;}
+.manage-links h3 {    font-family: 'Open Sans', sans-serif;}
+.manage-links h3 i{    margin-right: 10px;}
+.manage-links h3 a:hover {    color: #0073b7;}
+/*Social Media Custom Tiles*/
+.custom-tile h3{	margin-top:10px;}
+.custom-tile i{	margin-left:0px;}
+.tile-fb{	background-color:#3b5998;}
+.tile-fb:hover{	background-color:#314b80;}
+.tile-tw{	background-color:#55acee;	padding-bottom:49px;}
+.tile-tw:hover{	background-color:#4a95ce;}
+.tile-gplus{	background-color:#e02f2f;	padding-bottom:49px;}
+.tile-gplus:hover{	background-color:#c72a2a;}
+.tile-insta{	background-color:#a37154;	padding-bottom:49px;}
+.tile-insta:hover{	background-color:#895e45;}
+.tile-linkedin{	background-color:#1686b0;	padding-bottom:49px;}
+.tile-linkedin:hover{	background-color:#116e91;}
+/*Icons*/
+.bg-fb{	background-color:#3b5998 !important;	color:#FFF !important;}
+.bg-tw{	background-color:#55acee !important;	color:#FFF !important;}
+.bg-gplus{	background-color:#e02f2f !important;	color:#FFF !important;}
+.bg-insta{	background-color:#a37154 !important;	color:#FFF !important;}
+.bg-linkedin{	background-color:#1686b0 !important;	color:#FFF !important;}
+/*Keyword Positions*/
+.green{	color:#00a65a;}
+.blue{	color:#00c0ef;}
+.red{	color:#f4543c;}
+.cbp_tmtimeline > li .cbp_tmtime{	width:23% !important;}
+.custom-btn a{    padding:7px 12px;     margin-right: 15px;}
+.num-views {    color: #5c5c5c;    font-size: 14px;}
+/*Footer*/
+.footer-links {    float: right;}
+.footer-links a{    margin-left: 20px;    text-transform: uppercase;}
+
+/**
+* Message boxes
+*/
+.info, .success, .warning, .error, .validation {border: 1px solid;margin: 10px 0px;padding:15px 10px 15px 50px;background-repeat: no-repeat;background-position: 10px center;}
+.info {color: #00529B;background-color: #BDE5F8;background-image: url('info.png');}
+.success {color: #4F8A10;background-color: #DFF2BF;background-image:url('success.png');}
+.warning {color: #9F6000;background-color: #FEEFB3;background-image: url('warning.png');}
+.error {color: #D8000C;background-color: #FFBABA;background-image: url('error.png');}
+.addClientForm label { font-weight: bold;}
+/**************************************************************DROPDOWN DATE****************/
+.daterangepicker.dropdown-menu .calendar { /*float:none !important;*/}
+.daterangepicker.dropdown-menu .ranges { float:left !important;}
+.daterangepicker.dropdown-menu { max-width:474px !important;}
+.user-image-thumb { border: 2px solid #f5f5f5; height:80px; width:80px; overflow:hidden; position:relative; float:left; margin-right:7px; margin-top:-12px;} 
+.user-image-thumb img { position:absolute; left:0; top:0; border:0 !important; margin:0; height:100%;} 
+.profile-info.dropdown > a { display:block;}
+.dropdown-toggle span { display:block; padding-top:12px; float:left;}
+.page-container .sidebar-menu {-webkit-transition: all .5s ease-in-out;   -moz-transition: all .5s ease-in-out;  -o-transition: all .5s ease-in-out;  transition: all .5s ease-in-out; overflow:hidden;}
+.data-table-top .dataTables_length,.data-table-top .export-data{display:inline-block;vertical-align:top;
+}
+.data-table-top .export-data{padding:8px;}
+.data-table-top .dataTables_filter{display:block;margin-top:-58px;}
+@media screen and (max-width: 767px) {
+.fr.custom-btn, .col-sm-4.fr{ float:left;}
+.fr.custom-btn { margin-bottom: 10px; width: 100%; padding: 0 15px;}
+.custom-btn a { margin-right: 0px; width: 100%;}
+.col-sm-4.fr { width:100%; margin-bottom:10px;}
+#charts_env .table-responsive th { padding:12px !important;}
+#charts_env .table-responsive th  span.pull-right { float:none !important}
+.daterangepicker .ranges { width:82% !important;}
+.daterangepicker.opensright .ranges, .daterangepicker.opensright .calendar { margin:5px 26px 10px 26px !important;}
+.viral-links a { margin:0;}
+#s2id_autogen1 .select2-arrow b { background: none !important;}
+/*.dataTables_wrapper .export-data {right:0 !important;border-top:1px solid #ebebeb;
+border-right:1px solid #ebebeb;padding-right:12px;height:58px;padding-right:12px;margin-right: 0px;
+border-radius: 0px 3px 0 0;background-clip:padding-box;}*/
+.data-table-top{border:1px solid #ebebeb;border-bottom:0;}
+#table-4_filter { position: relative; padding-top:100px; height: auto;}
+#table-4_length { padding-bottom:136px;}
+#table-4_length label { position: relative; z-index: 10;}
+.export-data .btn { padding: 6px 10.8px;}
+.data-table-top .dataTables_length,.data-table-top .export-data{border:0;}
+.data-table-top .dataTables_filter{display:inline-block;margin-top:0px;border:0;width:324px;
+position:relative;
+}
+.dataTables_wrapper .dataTables_filter > label input {/*width: 202px;*/ }
+.main-content a.btn.btn-blue.fr { margin-top:0px !important; width: 100%; }
+.pagination-sm > li > a, .pagination-sm > li > span { padding: 5px 8px;}
+#sortResult { padding-top:24px;}
+.dataTables_wrapper .dataTables_info.dataTables_info, .dataTables_wrapper .dataTables_paginate.dataTables_info { border-radius:0; border-right: solid 1px #EBEBEB; text-align: center;}
+.dataTables_wrapper .dataTables_info.dataTables_paginate, .dataTables_wrapper .dataTables_paginate.dataTables_paginate { border-radius:0 0 3px 3px; border-left: solid 1px #EBEBEB; text-align: center; }
+}
+@media only screen and (max-width: 760px),(min-device-width: 768px) and (max-device-width: 1024px){
+	
+		table, thead, tbody, th, td, tr { 
+			display: block; 
+		}
+		
+		#table-4 thead tr { 
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+		
+		
+		#table-4 td { 
+			border: none;
+			border-bottom: 1px solid #eee; 
+			position: relative;
+			padding-left: 50% !important;
+			word-wrap: break-word; 
+		}
+		
+		#table-4 td:before { 
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			width: 45%; 
+			padding-right: 10px; 
+			white-space: nowrap;
+		}
+		.tbl-mng-calls td:nth-of-type(1):before { content: "Sr"; }
+		.tbl-mng-calls td:nth-of-type(2):before { content: "Numbers"; }
+		.tbl-mng-calls td:nth-of-type(3):before { content: "Time"; }
+		.tbl-mng-calls td:nth-of-type(4):before { content: "Duration"; }
+		.tbl-mng-calls td:nth-of-type(5):before { content: "Date"; }
+		
+		
+		.tbl-mng-emails td:nth-of-type(1):before { content: "S.No"; }
+		.tbl-mng-emails td:nth-of-type(2):before { content: "Name"; }
+		.tbl-mng-emails td:nth-of-type(3):before { content: "Email"; }
+		.tbl-mng-emails td:nth-of-type(4):before { content: "Phone"; }
+		.tbl-mng-emails td:nth-of-type(5):before { content: "Message"; }
+		.tbl-mng-emails td:nth-of-type(6):before { content: "Date"; }
+		
+		#table-clients td:nth-of-type(1):before { content: "S.No"; }
+		#table-clients td:nth-of-type(2):before { content: "Client"; }
+		#table-clients td:nth-of-type(3):before { content: "Email"; }
+		#table-clients td:nth-of-type(4):before { content: "Name"; }
+		#table-clients td:nth-of-type(5):before { content: "username"; }
+		#table-clients td:nth-of-type(6):before { content: "No-reply email"; }
+		#table-clients td:nth-of-type(7):before { content: "Notify email"; }
+		#table-clients td:nth-of-type(8):before { content: "Account type"; }
+		#table-clients td:nth-of-type(9):before { content: "Actions"; }
+		
+		.tbl-mng-calls2 td:nth-of-type(1):before { content: "Sr."; }
+		.tbl-mng-calls2 td:nth-of-type(2):before { content: "Client Name"; }
+		.tbl-mng-calls2 td:nth-of-type(3):before { content: "Client Number"; }
+		.tbl-mng-calls2 td:nth-of-type(4):before { content: "Numbers"; }
+		.tbl-mng-calls2 td:nth-of-type(5):before { content: "Time"; }
+		.tbl-mng-calls2 td:nth-of-type(6):before { content: "Duration"; }
+		.tbl-mng-calls2 td:nth-of-type(7):before { content: "Date"; }
+		.tbl-mng-calls2 td:nth-of-type(8):before { content: "Mark as test data"; }
+	}
+@media only screen and (max-width: 0px){
+
+}

@@ -1,0 +1,18 @@
+/* 
+    Document   : dashboard
+    Created on : Jul 2, 2015, 12:38:47 PM
+    Author     : danish
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.chart-loader{
+    background-image: url('../images/chart-loader.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
