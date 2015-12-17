@@ -27,7 +27,11 @@ if(isset($_REQUEST['sub']) && $_REQUEST['sub']=='delete'){
 }
 
 
-$q = "SELECT * FROM phone_numbers";
+$q = "SELECT * , IF( end_date !=  '0000-00-00'
+        AND end_date > CURDATE( ) ,  'Yes',  'No' ) AS is_assigned
+        FROM phone_numbers
+        LEFT JOIN campaigns
+        ON phone_numbers.phone_number = campaigns.gsm_number";
 $cl = $db->Execute($q);
 $c = $cl->RecordCount();
 
@@ -53,6 +57,7 @@ print_error($error);
         <thead>
             <tr>
                 <th>Phone Number</th>
+                <th>Assigned</th>
                 <th>Test</th>
                 <th width="20%">Actions</th>
             </tr>
@@ -65,6 +70,7 @@ print_error($error);
                     ?>
                         <tr>
                         <td><?php echo $cl->fields['phone_number'];?> </td>
+                        <td><?php echo $cl->fields['is_assigned'];?> </td>
                         <td><?php echo ($cl->fields['test_number']==1)?'Yes':'No';?> </td>
                         <td>
                             <a href="admin.php?act=editphone&id=<?php echo $cl->fields['id']; ?>"  class="btn btn-default btn-sm btn-icon icon-left">

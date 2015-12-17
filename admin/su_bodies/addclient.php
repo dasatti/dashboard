@@ -38,9 +38,10 @@ if(isset($_POST['submit_add_client'])){
         $error[] = 'Notify email address is invalid';
     }
     if($ac_account_type!='super'){
+        //Gsm number should no more be linked to clients
         if($client_ids==''){
-            $valid = false;
-            $error[] = 'GSM Number (client id) is required for clients';
+            //$valid = false;
+            //$error[] = 'GSM Number (client id) is required for clients';
         }
     }
     
@@ -69,7 +70,8 @@ if(isset($_POST['submit_add_client'])){
         $upload_err = false;
         if(!$upload_err){
             $uploaded_file = $ac_cropped_thumbnail;
-            $sql = "INSERT INTO tbl_admin(client_id,ga_view_id,name,username,password,email,noreplyemail,notifyemail,account_type,campaign_start,campaign_end,image) VALUES('$client_ids','$ac_ga_view_id','$ac_full_name','$ac_username','$ac_password','$ac_email','$ac_noreply_email','$ac_notify_email','$ac_account_type','$ac_campaign_start','$ac_campaign_end','$uploaded_file')";
+            $sql = "INSERT INTO tbl_admin(ga_view_id,name,username,password,email,noreplyemail,notifyemail,account_type,campaign_start,campaign_end,image)
+             VALUES('$ac_ga_view_id','$ac_full_name','$ac_username','$ac_password','$ac_email','$ac_noreply_email','$ac_notify_email','$ac_account_type','$ac_campaign_start','$ac_campaign_end','$uploaded_file')";
             $r = $db->Execute($sql);
             if($r){
                 $msg[] = "Client added successfully";
@@ -116,9 +118,8 @@ print_error($error);
 <form  role="form" class="addClassForm col-md-12" method="post" action="admin.php?act=addclient" enctype="multipart/form-data">
     
 <div class="col-md-8 col-sm-12">
-<div class="form-group">
+<!-- <div class="form-group">
 <label class="">GSM Number: </label>
-<!--<input type="text" name="client_id" value="<?php echo $_POST['client_id']; ?>" class="form-control">--> 
 <select name="client_id[]" class="form-control" multiple="multiple">
 <?php 
 
@@ -130,7 +131,7 @@ print_error($error);
 
 ?>
 </select>
-</div>
+</div> -->
 <div class="form-group">
 <label>Google Analytics View ID:  </label>
 <input type="text" name="ga_view_id" value="<?php echo $_POST['ga_view_id']; ?>" class="form-control"> 

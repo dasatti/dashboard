@@ -2,7 +2,7 @@
 define('ROOT',"../");
 include(ROOT.'../adodb/adodb.inc.php');
 include('../../include/siteconfig.inc.php');
-$db = ADONewConnection('mysql');
+$db = ADONewConnection('mysqli');
 $db->Connect(DBHOST,DBUSER,DBPASS,DBNAME) or die("Database not found! please install your application properly");
 /*
 	Sample Processing of Forgot password form via ajax
