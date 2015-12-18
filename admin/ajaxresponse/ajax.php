@@ -3,7 +3,7 @@ include('../../adodb/adodb.inc.php');
 include('../../include/siteconfig.inc.php');
 include('../../include/sitefunction.php');
 include('../script_include.php');
-$db = ADONewConnection('mysql');
+$db = ADONewConnection(DBENGINE);
 $db->Connect(DBHOST,DBUSER,DBPASS,DBNAME) or die("Database not found! please install your application properly");
 
 

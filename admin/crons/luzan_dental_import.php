@@ -9,7 +9,7 @@ include('../../include/siteconfig.inc.php');
 include('../../include/sitefunction.php');
 
 
-// $db = ADONewConnection('mysqli');
+// $db = ADONewConnection(DBENGINE);
 // $db->Connect(DBHOST,DBUSER,DBPASS,DBNAME) or die("Database not found! please install your application properly");
   
 

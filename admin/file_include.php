@@ -9,7 +9,7 @@
 	
 	include('../adodb/adodb.inc.php');
 	include('../include/siteconfig.inc.php');
-	$db = ADONewConnection('mysql');
+	$db = ADONewConnection(DBENGINE);
 	$db->Connect(DBHOST,DBUSER,DBPASS,DBNAME) or die("Database not found! please install your application properly");
 	
 	include('../include/sitefunction.php');

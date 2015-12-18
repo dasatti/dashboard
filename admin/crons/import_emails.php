@@ -15,7 +15,7 @@ include('../../include/sitefunction.php');
 $debug = false;
 if(isset($_REQUEST['debug'])) $debug=$_GET['debug'];
 
-$db = ADONewConnection('mysql');
+$db = ADONewConnection(DBENGINE);
 $db->Connect(DBHOST,DBUSER,DBPASS,DBNAME) or die("Database not found! please install your application properly");
 	
 

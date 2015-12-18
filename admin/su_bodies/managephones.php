@@ -27,8 +27,8 @@ if(isset($_REQUEST['sub']) && $_REQUEST['sub']=='delete'){
 }
 
 
-$q = "SELECT * , IF( end_date !=  '0000-00-00'
-        AND end_date > CURDATE( ) ,  'Yes',  'No' ) AS is_assigned
+$q = "SELECT * , IF( end_date =  '0000-00-00'
+        OR end_date > CURDATE( ) ,  'Yes',  'No' ) AS is_assigned
         FROM phone_numbers
         LEFT JOIN campaigns
         ON phone_numbers.phone_number = campaigns.gsm_number";

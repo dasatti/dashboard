@@ -62,7 +62,7 @@ class DashboardCommon {
     }
     
     private static function db_connect(){
-        DashboardCommon::$db = ADONewConnection('mysqli');
+        DashboardCommon::$db = ADONewConnection(DBENGINE);
         DashboardCommon::$db->Connect(DBHOST,DBUSER,DBPASS,DBNAME) or die("Database not found! please install your application properly");
         DashboardCommon::$conn = true;
     }
