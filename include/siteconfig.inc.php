@@ -19,7 +19,7 @@ define('ROOT',"../");
 
 define('DBHOST', 'localhost'); 
 define('DBUSER', 'root');
-define('DBPASS', 'dasatti');
+define('DBPASS', '');
 define('DBNAME', 'dashboard');
 define('DBENGINE', 'mysqli');
 
