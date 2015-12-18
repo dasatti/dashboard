@@ -1,12 +1,12 @@
 <?php 
 session_start();
-ini_set("display_error", 0);
+ini_set("display_error", 1);
 #######################
 #
 # Data Base Connection
 #
 #######################
-error_reporting(0);
+error_reporting(1);
 //define('DBHOST', 'localhost'); 
 //define('DBUSER', 'lmagency');
 //define('DBPASS', 'Local@2014');
@@ -30,7 +30,7 @@ define('DBENGINE', 'mysqli');
 
 
 
-$sub = "/dashboard";
+$sub = "/dashboardv2";
 if(strstr($_SERVER['HTTP_HOST'],'dev1')){
 	$sub = '/agency-dashboard';	
 }

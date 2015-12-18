@@ -49,7 +49,17 @@ class DashboardCommon {
             $gsm_id = rtrim($gsm_ids,',');
         }
         $this->client_gsm_id = $gsm_id;
-        
+
+        //use gsm number from assigned campaigns instead of client table
+        require_once dirname(__FILE__).'/Client.php';
+        $campaigns = Client::get_campaigns();
+        $gsm_id = "";
+        foreach($campaigns as $campaign){
+            $gsm_id.=$campaigns['gsm_number'].',';
+        }
+        $gsm_id = rtrim($gsm_ids,',');
+        $this->client_gsm_id = $gsm_id;
+
         
         
         $this->ga_view_id = $_SESSION['lm_auth']['ga_view_id'];

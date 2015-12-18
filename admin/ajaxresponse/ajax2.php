@@ -18,6 +18,7 @@ $db->Connect(DBHOST,DBUSER,DBPASS,DBNAME) or die("Database not found! please ins
 $is_su = ($_SESSION['lm_auth']['account_type']=='super')?true:false;
 $client_id;
 
+//$client_gsm_id logic outdated
 $client_id_temp = $_SESSION['lm_auth']['client_id'];
 if(!empty($client_id_temp)){
         $client_id_arr = explode("#",$client_id_temp);
@@ -28,6 +29,7 @@ if(!empty($client_id_temp)){
     $client_id = rtrim($client_ids,',');
 }
 $client_gsm_id = $client_id;
+//$client_gsm_id updated logic
 $client_unbouce_id = $_SESSION['lm_auth']['tbl_id'];
 
 
@@ -296,7 +298,7 @@ function getLeadsChartData($from,$to,$period){
 // ROI
 ////////////////////////////////////////////////////////////////////////////
 function getROIData($from,$to){
-    
+
     if($is_su){
         //admin roi not supported yet
         return array();
@@ -326,6 +328,24 @@ function getROIData($from,$to){
     return array('period_roi'=>$period_roi,'lifetime_roi'=>$lifetime_roi,'total_leads_period'=>$total_leads_period,'avg_value_of_sale'=>$avg_value_of_sale,'avg_lead_to_sale'=>$avg_lead_to_sale);
 }
 
+function getROIChartData($from,$to){
+    
+    if($is_su){
+        //admin roi not supported yet
+        return array();
+    }
+    
+    global $db;
+    global $client_gsm_id;
+
+    //use gsm ids linked to campaigns instead of client table
+    require_once dirname(__FILE__).'/Client.php';
+    $campaigns = Client::get_campaigns();
+    print_r($campaigns);die;
+    
+    
+    
+}
 
 /////////////////////////////////////////////////////////////////////////////////
 // Generate PDF Report

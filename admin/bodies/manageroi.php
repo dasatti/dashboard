@@ -53,27 +53,19 @@ function calculateROI(period,from,to){
 		
 		var sortCriterean = '';
 		if(val=='Today'){
-			sortCriterean = 'today';
-//                        calculateROI(sortCriterean);			
+			sortCriterean = 'today';		
 		}else if(val=='Yesterday'){
 			sortCriterean = 'yesterday';
-//                        calculateROI(sortCriterean);
 		}else if(val=='Last 7 Days'){
-			sortCriterean = 'last_7_days';
-//                        calculateROI(sortCriterean);			
+			sortCriterean = 'last_7_days';		
 		}else if(val=='Last 30 Days'){
 			sortCriterean = 'last_30_days';
-//                        calculateROI(sortCriterean);
-		
 		}else if(val=='This Month'){
-			sortCriterean = 'this_month';
-//                        calculateROI(sortCriterean);			
+			sortCriterean = 'this_month';		
 		}else if(val=='Last Month'){	
 			sortCriterean = 'last_month';
-//                        calculateROI(sortCriterean);
 		}else if(val=='Lifetime'){
 			sortCriterean = 'lifetime';
-//                        calculateROI(sortCriterean);
 		}else{
 			var first = document.getElementById("daterangepicker_start").value;
 			var secon = document.getElementById("daterangepicker_end").value;
@@ -81,11 +73,11 @@ function calculateROI(period,from,to){
 //                        calculateROI(sortCriterean);			
 		}
                 
-                var date_from = document.getElementById("daterangepicker_start").value;
-                var date_to = document.getElementById("daterangepicker_end").value;
-                calculateROI(sortCriterean,date_from,date_to);
-                
-                saveDateRange(sortCriterean,date_from,date_to);
+        var date_from = document.getElementById("daterangepicker_start").value;
+        var date_to = document.getElementById("daterangepicker_end").value;
+        calculateROI(sortCriterean,date_from,date_to);
+        
+        saveDateRange(sortCriterean,date_from,date_to);
 				
 	}
 </script>
