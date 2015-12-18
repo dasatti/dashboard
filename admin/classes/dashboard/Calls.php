@@ -62,7 +62,11 @@ class Calls extends DashboardCommon{
             $r->MoveNext();
         }
     }
-    
+   	public function setFeedback($id,$optionVal){
+		 $sql = "Update calls SET feedback = '".$optionVal."' WHERE id = '".$id."' ";//echo $sql;die;
+		$r = DashboardCommon::db()->Execute($sql);
+		return 'yes';
+	}    
     public function setPeriod($period){
         $this->period = $period;
         

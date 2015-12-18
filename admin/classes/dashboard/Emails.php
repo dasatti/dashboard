@@ -33,7 +33,11 @@ class Emails extends DashboardCommon{
         $this->setPeriod('lifetime');
         
     }
-    
+     public function setFeedback($id,$optionVal){// 14-12-2015: update status for email feed back.
+		$sql = "Update emails SET feedback = '".$optionVal."' WHERE id = '".$id."' ";//echo $sql;die;
+        $r = DashboardCommon::db()->Execute($sql);
+		return 'yes';
+	}   
     public function setPeriod($period){
         $this->period = $period;
         

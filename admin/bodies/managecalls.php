@@ -66,8 +66,15 @@
                 dataType:'json',
                 data:{act:"get_calls_table_data",period:saved_date_period,from:saved_date_from,to:saved_date_to},
                 success: function(data){
-                    var row="";var sno=0;
+                    var row="";var sno=0; var dataFeedback="";
                     $.each(data, function(index,element){
+						if(element.feedback =='0'){
+							dataFeedback = "<div id=\"feedback_row_"+element.id+"\"><select id=\"feedback_"+element.id+"\"><option value=\"0\">select</option><option value=\"1\">like</option><option value=\"2\">Dislike</option></select><br><div><button onclick=\"updateFeedback("+element.id+")\" class=\"btn btn-ext-setting\" type=\"button\">Save</button></div></div>";
+						}else if(element.feedback == "1"){
+						var	dataFeedback = "<span class=\"badge badge-success\">Like</span>";
+						}else if(element.feedback == '2'){
+						var	dataFeedback = "<span class=\"badge badge-primary\">Dislike</span>";
+						}
                         sno++;
                         var status = (element.status=='BUSY')?'SUCCESS':element.status;
                         row+="<tr>";
@@ -78,7 +85,7 @@
                         row+="<td>"+status+"</td>";
                         row+="<td>"+element.call_date+"</td>";
                         row+="<td>"+element.call_time+"</td>";
-                        
+                        row+="<td>"+dataFeedback+"</td>";
                         row+="</tr>";                         
                     });
                     
@@ -91,8 +98,8 @@
                         "sDom": "<'row'<'col-xs-6 col-left'l><'col-xs-6 col-right'<'export-data'T>f>r>t<'row'<'col-xs-6 col-left'i><'col-xs-6 col-right'p>>",
                         "oTableTools": {
                         },
-                        "order": [[ 5, "desc" ]],
-                        "columns":[,{ "visible": false },,,{ "visible": false },,,]
+                        "order": [[ 6, "desc" ]],
+                        "columns":[,{ "visible": false },,,{ "visible": false },,,{"width":"5%","text-align":"center"},]
                     });
                     $(document).dtToggleCols('#table-calls');
                 }
@@ -116,7 +123,38 @@
         }
     );
     
- 
+   function updateFeedback(id){
+	 var optionVal = $("#feedback_"+id).val();
+
+	if(optionVal=='0'){
+	   alert("Please select the feedback status like or dilike!"); return;		
+	}else{
+	if (confirm('Are you sure you want to save this feedback status?')) {
+     $.ajax({
+                url:"<?php echo SURL ?>ajaxresponse/ajax2.php",
+                type:"GET",
+                cache:false,
+                dataType:'json',
+                data:{act:"update_feedback_onCalls",id:id,optionVal:optionVal},
+                success: function(data){
+						//alert(data['result']);
+						if(data['result']=='yes'){
+							//alert('Feedback status has been successfully updated');
+							if(optionVal=='1'){
+								var result = "<span class=\"badge badge-success\">Like</span>";
+							}else if(optionVal =='2'){
+								var result =  "<span class=\"badge badge-primary\">Dislike</span>";
+							}
+							$("#feedback_row_"+id).html(result);	return;
+						}
+				}
+	  });
+	} else {
+    // Do nothing!
+	}
+	 
+	}
+	}
  
  function loadCallsData(period,from,to){
         $.ajax({
@@ -139,7 +177,8 @@
                             '<span class="badge badge-success">'+element.new_call+'</span>',
                             status,
                             element.call_date,
-                            element.call_time
+                            element.call_time,
+							element.feedback
                         ]);
                     });
                     
@@ -229,6 +268,7 @@ function getTitleFromPeriod(period){
                     <th>Status</th>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Feedback</th>
                 </thead>
                 <tbody>
 

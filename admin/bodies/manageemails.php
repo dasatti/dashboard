@@ -69,9 +69,16 @@
                 dataType:'json',
                 data:{act:"get_emails_table_data",period:saved_date_period,from:saved_date_from,to:saved_date_to},
                 success: function(data){
-                    var row="";var sno=0;
+                    var row="";var sno=0;  var dataFeedback = "";
                     $.each(data, function(index,element){
-                        
+                       
+						if(element.feedback =='0'){
+							dataFeedback = "<div id=\"feedback_row_"+element.id+"\"><select id=\"feedback_"+element.id+"\"><option value=\"0\">select</option><option value=\"1\">like</option><option value=\"2\">Dislike</option></select><br><div><button onclick=\"updateFeedback("+element.id+")\" class=\"btn btn-ext-setting\" type=\"button\">Save</button></div></div>";
+						}else if(element.feedback == "1"){
+						var	dataFeedback = "<span class=\"badge badge-success\">Like</span>";
+						}else if(element.feedback == '2'){
+						var	dataFeedback = "<span class=\"badge badge-primary\">Dislike</span>";
+						}
                         sno++;
                         row+="<tr>";
                         row+="<td>"+sno+"</td>";
@@ -83,6 +90,7 @@
                         row+="<td><span class=\"big-text\">"+element.message+"</span></td>";
                         row+="<td>"+element.gender+"</td>";
                         row+="<td>"+element.email_date_ae+"</td>";
+						row+="<td>"+dataFeedback+"</td>";
                         row+="</tr>";                         
                     });
                     
@@ -94,13 +102,13 @@
                         "sDom": "<'row'<'col-xs-6 col-left'l><'col-xs-6 col-right'<'export-data'T>f>r>t<'row'<'col-xs-6 col-left'i><'col-xs-6 col-right'p>>",
                         "oTableTools": {
                         },
-                        "order": [[ 7, "desc" ]],
+                        "order": [[ 8, "desc" ]],
                         "fnDrawCallback": function( oSettings, json ) {
                             lessTextAll(200);
                                 
                           },
                           "columns":[
-                              ,,,,{ "visible": false },,,{"visible":false},{"width":"15%"},
+                              ,,,,{ "visible": false },,,{"visible":false},{"width":"15%"},,
                           ]
                     });
                     
@@ -133,7 +141,36 @@
         }
     );
     
- 
+ function updateFeedback(id){
+	 var optionVal = $("#feedback_"+id).val();
+	if(optionVal=='0'){
+	   alert("Please select the feedback status like or dilike!"); return;		
+	}else{
+	if (confirm('Are you sure you want to save this feedback status?')) {
+	  $.ajax({
+                url:"<?php echo SURL ?>ajaxresponse/ajax2.php",
+                type:"GET",
+                cache:false,
+                dataType:'json',
+                data:{act:"update_feedback",id:id,optionVal:optionVal},
+                success: function(data){
+						//alert(data['result']);
+						if(data['result']=='yes'){
+							//alert('Feedback status has been successfully updated');
+							if(optionVal=='1'){
+								var result = "<span class=\"badge badge-success\">Like</span>";
+							}else if(optionVal =='2'){
+								var result =  "<span class=\"badge badge-primary\">Dislike</span>";
+							}
+							$("#feedback_row_"+id).html(result);	return;
+						}
+				}
+	  });
+	}else{
+		// do nothing!
+	}
+	}
+	}
  
  function loadEmailsData(period,from,to){
         $.ajax({
@@ -158,7 +195,8 @@
                             element.phone,
                             msg,
                             element.gender,
-                            element.email_date_ae
+                            element.email_date_ae,
+							element.feedback
                         ]);
                     });
                     
@@ -312,70 +350,55 @@ function dtToggleColsInit2(){
 	
 </script>
 
-
-
-
-
-
 <div class="row">
-    <div class="col-sm-4">
-        <ol class="breadcrumb bc-3">
-            <li> <a href="admin.php?act=dashboard"><i class="entypo-home"></i>Dashboard</a> </li>
-            <li class="active"> <strong>Emails</strong> </li>
-        </ol>
+  <div class="col-sm-4">
+    <ol class="breadcrumb bc-3">
+      <li> <a href="admin.php?act=dashboard"><i class="entypo-home"></i>Dashboard</a> </li>
+      <li class="active"> <strong>Emails</strong> </li>
+    </ol>
+  </div>
+  <?php    include 'bodies/request_call.php'; ?>
+  <form>
+    <div class="col-sm-4 fr">
+      <div class="daterange daterange-inline add-ranges" data-format="MMMM D, YYYY" data-start-date="<?php echo $LM_PERIOD_FROM;?>" data-end-date="<?php echo $LM_PERIOD_To;?>"> <i class="entypo-calendar"></i> <span><?php echo $LM_PERIOD_FROM;?> - <?php echo $LM_PERIOD_TO;?></span> </div>
     </div>
-    <?php    include 'bodies/request_call.php'; ?>
-    <form>
-        <div class="col-sm-4 fr">
-            <div class="daterange daterange-inline add-ranges" data-format="MMMM D, YYYY" data-start-date="<?php echo $LM_PERIOD_FROM;?>" data-end-date="<?php echo $LM_PERIOD_To;?>"> <i class="entypo-calendar"></i> <span><?php echo $LM_PERIOD_FROM;?> - <?php echo $LM_PERIOD_TO;?></span> </div>
-        </div>
-    </form>
-    <div class="clearfix"></div>
+  </form>
+  <div class="clearfix"></div>
 </div>
-
-
-
-
 <h2>Recent Emails</h2>
 <br />
-
-
 <div class="row">
-    <div class="col-md-12">
-        <div id="sortResult">
-            <table class="table table-bordered datatable tbl-mng-emails" id="table-emails">
-                <thead>
-                    <th>#</th>
-                    <th>Campaign</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Country</th>
-                    <th>Phone</th>
-                    <th>Message</th>
-                    <th>Gender</th>
-                    <th>Date</th>
-                </thead>
-                <tbody>
-
-                </tbody>
-
-            </table>
-        </div>
+  <div class="col-md-12">
+    <div id="sortResult">
+      <table class="table table-bordered datatable tbl-mng-emails" id="table-emails">
+        <thead>
+        <th>#</th>
+          <th>Campaign</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Country</th>
+          <th>Phone</th>
+          <th>Message</th>
+          <th>Gender</th>
+          <th>Date</th>
+          <th>Feedback</th>
+            </thead>
+        <tbody>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
-
 <br>
 <h2 id="ch_title">Breakup</h2>
 <div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <div class="panel-title">Chart</div>
-            </div>
-            <div id="emails_chart" class="chart-loader" style="height: 300px;"></div>
-        </div>
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">Chart</div>
+      </div>
+      <div id="emails_chart" class="chart-loader" style="height: 300px;"></div>
     </div>
+  </div>
 </div>
-
-
 <?php include("bodies/recommend.php"); ?>

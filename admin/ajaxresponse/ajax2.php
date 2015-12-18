@@ -79,7 +79,27 @@ function getAdminEmails(){
     }
     return $emails;
 }
-
+   /*12-15-2015: azhar : New update of task T9: update Feedback status*/
+	if($_GET['act'] == "update_feedback"){
+		require '../classes/dashboard/Emails.php';
+		$email = new Emails();
+		$result = $email->setFeedback($_GET['id'],$_GET['optionVal']);
+		$data = array();
+		$data['result'] = $result;
+		header('Content-Type: application/json');
+		echo json_encode($data); die();	
+	}
+	
+    /*12-15-2015: azhar : New update of task T9: update Feedback status*/
+	if($_GET['act'] == "update_feedback_onCalls"){
+		require '../classes/dashboard/Calls.php';
+		$calls = new Calls();
+		$result = $calls->setFeedback($_GET['id'],$_GET['optionVal']);
+		$data = array();
+		$data['result'] = $result;
+		header('Content-Type: application/json');
+		echo json_encode($data); die();	
+	}  
 function getLeadsData($from,$to){
     if(!$_SESSION['lm_auth']['account_type']=='super'){
         //no super admin
